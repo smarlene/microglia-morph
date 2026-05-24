@@ -27,14 +27,12 @@ Microglia-morph/
 |     ├── evaluation/               # ground truth annotations and training/test split of images for localization
 |     ├── ilastik_files/            # ilastik model files for localization
 |     ├── evaluate.ipynb            # notebook to sample and split training and test set for localization evaluatoin
-|     ├── evaluate.py               # evaluation functions to calculate bulk scores based on predictions and ground truth
-|     ├── model_utils.py            # functions used by heatmap localization
-|     ├── soma_automated_localization.ipynb     # notebook for handcrafted localization pipeline
-|     ├── soma_heatmap_localization.ipynb       # notebook for heatmap localization pipeline
-|     └── soma_ml_localization.ipynb            # notebook for ilastik localization pipeline
+|     ├── soma_handcrafted_localization.ipynb     # notebook for handcrafted localization pipeline
+|     ├── soma_heatmap_unet_localization.ipynb       # notebook for heatmap localization pipeline
+|     └── soma_ilastik_localization.ipynb            # notebook for ilastik localization pipeline
 ├── scripts/
+|     ├── evaluate.py               # evaluation functions to calculate bulk scores based on predictions and ground truth
 |     ├── filters.py        # filter functions for working with image tiles
-|     ├── preprocess.py     # binarization functions for image tiles
 |     └── utils.py          # miscellaneous utility functions used throughout cell localization
 ├── environment.yml         # Python dependencies
 └── README.md               # Project overview
