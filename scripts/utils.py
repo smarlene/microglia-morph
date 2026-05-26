@@ -2,6 +2,7 @@ import cv2
 import numpy as np 
 import json
 import matplotlib.pyplot as plt
+import pandas as pd 
 
 def pre_process_binarize(img):
     """Binarize image patches for cell localization"""
@@ -92,3 +93,11 @@ def make_gaussian_heatmap(image_shape, points, sigma=15.0):
 
     return heatmap
 
+
+def extract_bbs(file_path, results):
+    file = pd.read_parquet(file_path)
+    for index, r in file.iterrows():
+        x1, y1, x2, y2 = r["x1"], r["y1"], r["x2"], r["y2"]
+        results.append({"x1":int(x1),"y1":int(y1),"x2":int(x2),"y2":int(y2)})
+
+    return results
