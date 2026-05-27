@@ -465,7 +465,9 @@ dependencies:
       - nvidia-nvtx==13.0.85
       - nvidia-nvtx-cu12==12.1.105
       - pathspec==1.1.1
+      - py4j==0.10.9.9
       - pyarrow==24.0.0
+      - pyspark==4.1.1
       - pytokens==0.4.1
       - pyyaml==6.0.3
       - rich==15.0.0
