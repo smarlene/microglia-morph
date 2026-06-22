@@ -1,0 +1,7 @@
+.venv
+*.png
+*.svg
+*.tiff
+*.pth
+*.parquet
+*.pdf
