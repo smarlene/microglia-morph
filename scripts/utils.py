@@ -1,8 +1,9 @@
 import cv2
-import numpy as np 
+import numpy as np
 import json
 import matplotlib.pyplot as plt
-import pandas as pd 
+import pandas as pd
+
 
 def pre_process_binarize(img):
     """Binarize image patches for cell localization"""
@@ -49,6 +50,24 @@ def calculate_bb(segmented_cells, segmentation_value=255):
         bboxs.append(bbox)
     return bboxs
 
+
+def extract_bbs_centroid(file_path, results):
+    file = pd.read_parquet(file_path)
+
+    for _, r in file.iterrows():
+        x1, y1, x2, y2, cx, cy = r["x1"], r["y1"], r["x2"], r["y2"], r["cx"], r["cy"]
+        results.append(
+            {
+                "x1": int(x1),
+                "y1": int(y1),
+                "x2": int(x2),
+                "y2": int(y2),
+                "cx": int(cx),
+                "cy": int(cy),
+            }
+        )
+
+    return results
 
 
 def extract_points_from_json(json_path, debug=False):
@@ -98,6 +117,18 @@ def extract_bbs(file_path, results):
     file = pd.read_parquet(file_path)
     for index, r in file.iterrows():
         x1, y1, x2, y2 = r["x1"], r["y1"], r["x2"], r["y2"]
-        results.append({"x1":int(x1),"y1":int(y1),"x2":int(x2),"y2":int(y2)})
+        results.append({"x1": int(x1), "y1": int(y1), "x2": int(x2), "y2": int(y2)})
+
+    return results
+
+
+def extract_embeddings(file_path, results):
+    file = pd.read_parquet(file_path)
+
+    for index, r in file.iterrows():
+        intermediate = []
+        for i in range(256):
+            intermediate.append(r[f"emb_{i}"])
+        results.append(intermediate)
 
     return results

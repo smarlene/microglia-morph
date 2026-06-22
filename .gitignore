@@ -3,4 +3,5 @@
 *.svg
 *.tiff
 *.pth
-data
+*.parquet
+*.pdf

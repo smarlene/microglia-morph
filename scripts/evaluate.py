@@ -1,6 +1,7 @@
-import json 
+import json
 from scipy.optimize import linear_sum_assignment
 from scipy.spatial.distance import cdist
+
 
 def read_annotations(annotation_path):
     """Extract bounding box annotations from JSON ground truth"""
@@ -38,6 +39,7 @@ def read_annotations_points(json_path):
 
         annotations_dict[img_name] = points
     return annotations_dict
+
 
 def iou(bb_gt, bb_pred):
     """Calculate IOU between predicted and ground truth bounding box, operating under the assumption that boxes are passed as: [x1,y1,x2,y2]"""
@@ -97,7 +99,6 @@ def bulk_eval(
         f"Evaluation output:\nTP:{total_tp}\nFP:{total_fp}\nFN:{total_fn}\nMean {unit}:{mean_unit}\nF1-score: {f1}"
     )
     return total_tp, total_fp, total_fn
-
 
 
 def calculate_accuracy_points(ground_truth, img, preds, dist_threshold=25, plot=False):

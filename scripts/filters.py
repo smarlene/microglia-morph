@@ -2,6 +2,7 @@ import numpy as np
 
 no_tissue = [235.61109337, 234.91000469, 233.74045357]
 
+
 def filter_tissue(patch):
     """Return true if the patch is not tissue, false is the patch is tissue"""
     if patch.shape[2] == 4:
